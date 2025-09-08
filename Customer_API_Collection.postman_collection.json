@@ -8,7 +8,7 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "http://localhost:8069",
+      "value": "http://localhost:8097",
       "description": "Odoo instance URL"
     }
   ],
@@ -161,7 +161,7 @@
               },
               "status": "OK",
               "code": 200,
-              "body": "{\n    \"status\": \"success\",\n    \"products\": [\n        {\n            \"id\": 1,\n            \"name\": \"Product Name\",\n            \"description\": \"Product description\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"category\": \"Category Name\",\n            \"category_id\": 1,\n            \"available_qty\": 10,\n            \"image_url\": \"http://localhost:8069/web/image/product.product/1/image_1920\",\n            \"uom\": \"Units\",\n            \"sku\": \"PROD001\",\n            \"is_available\": true\n        }\n    ],\n    \"total_count\": 1,\n    \"limit\": 20,\n    \"offset\": 0,\n    \"has_more\": false\n}"
+              "body": "{\n    \"status\": \"success\",\n    \"products\": [\n        {\n            \"id\": 1,\n            \"name\": \"Product Name\",\n            \"description\": \"Product description\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"category\": \"Category Name\",\n            \"category_id\": 1,\n            \"available_qty\": 10,\n            \"image_url\": \"http://localhost:8097/web/image/product.product/1/image_1920\",\n            \"uom\": \"Units\",\n            \"sku\": \"PROD001\",\n            \"is_available\": true\n        }\n    ],\n    \"total_count\": 1,\n    \"limit\": 20,\n    \"offset\": 0,\n    \"has_more\": false\n}"
             }
           ]
         }
@@ -272,7 +272,7 @@
               },
               "status": "OK",
               "code": 200,
-              "body": "{\n    \"status\": \"success\",\n    \"cart\": {\n        \"id\": 789,\n        \"name\": \"SO001\",\n        \"lines\": [\n            {\n                \"id\": 123,\n                \"product_id\": 1,\n                \"product_name\": \"Product Name\",\n                \"product_sku\": \"PROD001\",\n                \"quantity\": 2,\n                \"price_unit\": 99.99,\n                \"price_subtotal\": 199.98,\n                \"price_total\": 199.98,\n                \"image_url\": \"http://localhost:8069/web/image/product.product/1/image_1920\"\n            }\n        ],\n        \"subtotal\": 199.98,\n        \"tax_amount\": 0.0,\n        \"total\": 199.98,\n        \"currency\": \"USD\",\n        \"items_count\": 1,\n        \"partner_name\": \"John Doe\"\n    }\n}"
+              "body": "{\n    \"status\": \"success\",\n    \"cart\": {\n        \"id\": 789,\n        \"name\": \"SO001\",\n        \"lines\": [\n            {\n                \"id\": 123,\n                \"product_id\": 1,\n                \"product_name\": \"Product Name\",\n                \"product_sku\": \"PROD001\",\n                \"quantity\": 2,\n                \"price_unit\": 99.99,\n                \"price_subtotal\": 199.98,\n                \"price_total\": 199.98,\n                \"image_url\": \"http://localhost:8097/web/image/product.product/1/image_1920\"\n            }\n        ],\n        \"subtotal\": 199.98,\n        \"tax_amount\": 0.0,\n        \"total\": 199.98,\n        \"currency\": \"USD\",\n        \"items_count\": 1,\n        \"partner_name\": \"John Doe\"\n    }\n}"
             }
           ]
         }
