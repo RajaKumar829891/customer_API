@@ -1,0 +1,383 @@
+{
+  "info": {
+    "name": "Customer API - Odoo",
+    "description": "REST API for customer management and e-commerce in Odoo 17",
+    "version": "1.0.0",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8069",
+      "description": "Odoo instance URL"
+    }
+  ],
+  "item": [
+    {
+      "name": "Customer Management",
+      "item": [
+        {
+          "name": "Create Customer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"1234567890\",\n    \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/create",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "create"]
+            },
+            "description": "Create a new customer account"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"name\": \"John Doe\",\n    \"email\": \"john.doe@example.com\",\n    \"phone\": \"1234567890\",\n    \"password\": \"password123\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/customer/create",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "customer", "create"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Customer created successfully\",\n    \"customer_id\": 123,\n    \"user_id\": 456,\n    \"email\": \"john.doe@example.com\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Customer Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/customer/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "customer", "login"]
+            },
+            "description": "Login customer using email and password"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"email\": \"john.doe@example.com\",\n    \"password\": \"password123\"\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/customer/login",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "customer", "login"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Login successful\",\n    \"user_id\": 456,\n    \"customer_id\": 123,\n    \"customer_name\": \"John Doe\",\n    \"customer_email\": \"john.doe@example.com\",\n    \"session_token\": \"abc123...\",\n    \"session_id\": \"session123\"\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Product Management",
+      "item": [
+        {
+          "name": "List Products",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"limit\": 20,\n    \"offset\": 0,\n    \"category_id\": null,\n    \"search\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/products",
+              "host": ["{{base_url}}"],
+              "path": ["api", "products"]
+            },
+            "description": "Get list of available products with optional filtering"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"limit\": 20,\n    \"offset\": 0\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/products",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "products"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "body": "{\n    \"status\": \"success\",\n    \"products\": [\n        {\n            \"id\": 1,\n            \"name\": \"Product Name\",\n            \"description\": \"Product description\",\n            \"price\": 99.99,\n            \"currency\": \"USD\",\n            \"category\": \"Category Name\",\n            \"category_id\": 1,\n            \"available_qty\": 10,\n            \"image_url\": \"http://localhost:8069/web/image/product.product/1/image_1920\",\n            \"uom\": \"Units\",\n            \"sku\": \"PROD001\",\n            \"is_available\": true\n        }\n    ],\n    \"total_count\": 1,\n    \"limit\": 20,\n    \"offset\": 0,\n    \"has_more\": false\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shopping Cart",
+      "item": [
+        {
+          "name": "Add to Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Cookie",
+                "value": "session_id={{session_id}}",
+                "description": "Required for authentication"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"product_id\": 1,\n    \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cart/add",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cart", "add"]
+            },
+            "description": "Add product to user's cart (requires authentication)"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"product_id\": 1,\n    \"quantity\": 2\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/cart/add",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "cart", "add"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"Product added to cart successfully\",\n    \"cart_id\": 789,\n    \"cart_total\": 199.98,\n    \"cart_items_count\": 1,\n    \"product_name\": \"Product Name\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "View Cart",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Cookie",
+                "value": "session_id={{session_id}}",
+                "description": "Required for authentication"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/cart/view",
+              "host": ["{{base_url}}"],
+              "path": ["api", "cart", "view"]
+            },
+            "description": "View current user's cart contents"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/cart/view",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "cart", "view"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "body": "{\n    \"status\": \"success\",\n    \"cart\": {\n        \"id\": 789,\n        \"name\": \"SO001\",\n        \"lines\": [\n            {\n                \"id\": 123,\n                \"product_id\": 1,\n                \"product_name\": \"Product Name\",\n                \"product_sku\": \"PROD001\",\n                \"quantity\": 2,\n                \"price_unit\": 99.99,\n                \"price_subtotal\": 199.98,\n                \"price_total\": 199.98,\n                \"image_url\": \"http://localhost:8069/web/image/product.product/1/image_1920\"\n            }\n        ],\n        \"subtotal\": 199.98,\n        \"tax_amount\": 0.0,\n        \"total\": 199.98,\n        \"currency\": \"USD\",\n        \"items_count\": 1,\n        \"partner_name\": \"John Doe\"\n    }\n}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Utility Endpoints",
+      "item": [
+        {
+          "name": "List Categories",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/categories",
+              "host": ["{{base_url}}"],
+              "path": ["api", "categories"]
+            },
+            "description": "Get list of all product categories"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/categories",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "categories"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "body": "{\n    \"status\": \"success\",\n    \"categories\": [\n        {\n            \"id\": 1,\n            \"name\": \"All\",\n            \"parent_id\": null,\n            \"parent_name\": null,\n            \"complete_name\": \"All\"\n        }\n    ],\n    \"total_count\": 1\n}"
+            }
+          ]
+        },
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/health",
+              "host": ["{{base_url}}"],
+              "path": ["api", "health"]
+            },
+            "description": "Check API health status"
+          },
+          "response": [
+            {
+              "name": "Success Response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/api/health",
+                  "host": ["{{base_url}}"],
+                  "path": ["api", "health"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "body": "{\n    \"status\": \"success\",\n    \"message\": \"API is working\",\n    \"timestamp\": \"2024-01-15T10:30:00.000Z\",\n    \"odoo_version\": \"17.0\"\n}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
